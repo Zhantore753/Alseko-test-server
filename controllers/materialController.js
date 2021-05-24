@@ -41,6 +41,17 @@ class materialController {
             res.json({message: 'Не удалось обновить данные'});
         }
     }
+
+    async deleteMaterial(req, res){
+        try{
+            const id = req.params.id;
+            const person = await db.query("DELETE FROM material where id = $1", [id]);
+            res.json({person: person.rows[0], message: "Материльная ценность успешно удалена"});
+        }catch(e){
+            console.log(e);
+            res.json({message: 'Не удалось удалить МЦ'});
+        }
+    }
 }
 
 module.exports = new materialController();
