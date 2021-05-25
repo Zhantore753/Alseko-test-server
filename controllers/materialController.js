@@ -45,8 +45,19 @@ class materialController {
     async deleteMaterial(req, res){
         try{
             const id = req.params.id;
-            const person = await db.query("DELETE FROM material where id = $1", [id]);
-            res.json({person: person.rows[0], message: "Материльная ценность успешно удалена"});
+            const material = await db.query("DELETE FROM material where id = $1", [id]);
+            res.json({material: material.rows[0], message: "Материльная ценность успешно удалена"});
+        }catch(e){
+            console.log(e);
+            res.json({message: 'Не удалось удалить МЦ'});
+        }
+    }
+
+    async deleteMaterialByUserId(req, res){
+        try{
+            const id = req.params.id;
+            const materials = await db.query("DELETE FROM material where user_id = $1", [id]);
+            res.json({materials: materials.rows[0], message: "Материльные ценности успешно удалены"});
         }catch(e){
             console.log(e);
             res.json({message: 'Не удалось удалить МЦ'});
