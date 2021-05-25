@@ -17,6 +17,10 @@ create TABLE material(
     FOREIGN KEY (user_id) REFERENCES person (id)
 );
 
+
+
+-- DML commands
+
 -- Создание сотрудников
 INSERT INTO person(name, surname, patronymic) VALUES ('Арина', 'Захарова', 'Юрьевна');
 INSERT INTO person(name, surname, patronymic) VALUES ('Александр', 'Попов', 'Николаевич');
